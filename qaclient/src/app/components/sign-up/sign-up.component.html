@@ -1,0 +1,43 @@
+<div>
+  <div id="header">
+    <br/>
+    <button id='login' (click)='login()'>Login</button>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+  <br/>
+  <h1>Signup</h1>
+  <form [formGroup]='signupForm' (ngSubmit)='onSubmit()'>
+    <label>Name </label><span *ngIf='submitted && formControls.name.errors' >*</span>
+    <input type="text" placeholder="Enter name" formControlName='name' />
+    <div class="validator" *ngIf='(submitted || formControls.name.touched) && formControls.name.errors && formControls.name.errors.required '>Name is required</div>
+    <div class="validator" *ngIf='(submitted || formControls.name.touched) && formControls.name.errors && formControls.name.errors.minlength'>Name must be longer than 2 characters</div>
+    <br />
+    <br />
+    <label>Email ID </label><span *ngIf='submitted && formControls.emailID.errors' >*</span>
+    <input type="email" placeholder="Enter emailID" formControlName='emailID' />
+    <div class="validator" *ngIf='(submitted || formControls.emailID.touched) && formControls.emailID.errors && formControls.emailID.errors.required'>email ID is required</div>
+    <div class="validator" *ngIf='(submitted || formControls.emailID.touched) && formControls.emailID.errors && formControls.emailID.errors.emailError'>Enter a valid email ID</div>
+    <br />
+    <br/>
+    <label>Password </label><span *ngIf='submitted && formControls.password.errors' >*</span>
+    <input type="password" (keyup)="checkConfirmPassword()" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{4,}$" placeholder="Enter password" formControlName='password' />
+    <div class="validator" *ngIf='(submitted || formControls.password.touched) && formControls.password.errors && formControls.password.errors.required'>Password is required</div>
+    <div class="validator" *ngIf='(submitted || formControls.password.touched) && formControls.password.errors && formControls.password.errors.minlength'>Password must be longer than 4 characters</div>
+    <div class="validator" *ngIf='(submitted || formControls.password.touched) && formControls.password.errors && formControls.password.errors.pattern' >Enter a valid password</div>
+    <br />
+    <br/>
+    <label>Confirm Password </label><span *ngIf='showconfirmpasswarning' >*</span>
+    <input type="password" (keyup)="confirmPassword()" placeholder="Enter the password again" id="confirm_password"/>
+    <div class="validator" *ngIf='showconfirmpasswarning' >Entered passwords do not match</div>
+    <br/>
+    <br/>
+    <div id="message" *ngIf='submitted && message'>{{message}}</div>
+    <br/>
+    <button type="submit">Submit</button>
+  </form>
+  <br/>
+  <br/>
+  <br/>
+</div>

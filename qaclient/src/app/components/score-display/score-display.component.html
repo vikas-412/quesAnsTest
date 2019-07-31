@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Result Sheet</h1>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="col-sm-12">
+      <h4>You scored {{score}} out of {{totalQuestions}}</h4>
+    </div>
+    <br/>
+    <br/>
+  </div>
+  <div class="row" *ngFor="let questionDetail of scoreDetails">
+    <label class="col-sm-3">Question : </label>
+    <label class="col-sm-9">{{questionDetail.ques}}</label>
+    <label class="col-sm-3">Your answer : </label>
+    <span class="col-sm-9" *ngIf="questionDetail.markedAns.length">
+      <label>{{questionDetail.markedAns}}</label>
+    </span>
+    <span class="col-sm-9" *ngIf="!questionDetail.markedAns.length">
+      <label>You did not mark any answer for this question.</label>
+    </span>
+    <label class="col-sm-3">Result : </label>
+    <label class="col-sm-9">
+      <span *ngIf="questionDetail.correct">Correct</span>
+      <span *ngIf="!questionDetail.correct">Wrong</span>
+    </label>
+    <label class="col-sm-3">Correct answer :</label>
+    <label class="col-sm-9">{{questionDetail.correctAns}}</label>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
+<button id="OK" class="btn btn-success" (click)="toggleOverlay()">OK</button>
+<br/>
+<!-- <button (click)="onTest()" >Test</button> -->
+<br/>

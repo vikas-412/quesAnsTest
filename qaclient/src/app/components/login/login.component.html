@@ -1,0 +1,29 @@
+<div>
+    <div id="header">
+        <br/>
+        <button id='signup' (click)=signup()>Signup</button>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <h1>Login </h1>
+    <br/>
+    <form [formGroup]='loginForm' (ngSubmit)='submit()'>
+        <label>Email ID  </label><span *ngIf='submitted && formControls.emailID.errors'>*</span>
+        <input type="text" placeholder="Enter emailID" formControlName='emailID' />
+        <div class='validator' *ngIf='(submitted || formControls.emailID.touched) && formControls.emailID.errors && formControls.emailID.errors.required'>Email ID is required</div>
+        <div class='validator' *ngIf='(submitted || formControls.emailID.touched) && formControls.emailID.errors && formControls.emailID.errors.emailError'>Enter a valid email ID</div>
+        <br/><br/>
+        <label>Password  </label><span *ngIf='submitted && formControls.password.errors'>*</span>
+        <input type="password" placeholder="Enter password" formControlName='password' />
+        <div class='validator' *ngIf='(submitted || formControls.password.touched) && formControls.password.errors && formControls.password.errors.required'>Password is required</div>
+        <div class='validator' *ngIf='(submitted || formControls.password.touched) && formControls.password.errors && formControls.password.errors.minlength'>Length of password must be greater than 4</div>
+        <br/>
+        <br/>
+        <div id="message" *ngIf='submitted && message' >{{message}}</div>
+        <br/>
+        <button type="submit">Submit</button>
+        <br/>
+        <br/>
+    </form>
+</div>

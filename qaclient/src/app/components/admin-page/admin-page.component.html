@@ -1,0 +1,60 @@
+<div class="container">
+  <h1>Admin Panel
+    <button class="btn btn-success" id="start" (click)="startTest()">Start Test</button>
+    <button class="btn btn-danger" id="logout" (click)="logout()">Logout</button>
+  </h1>
+  <hr/>
+  <!-- <button class="btn btn-danger" (click)="test()">Test</button> -->
+  <h2>Test Database</h2>
+  <button class="btn btn-success" (click)="addNew()">Add new Question</button>
+  <br/>
+  <br/>
+  <div class="row" *ngFor="let singleQA of allQuesAns; let i= index">
+    <hr id="singleQues" class="col-sm-12" />
+    <label class="col-sm-2"> Include in Test ? </label>
+    <label class="col-sm-2"> Question {{i+1}} :</label>
+    <br/>
+    <label class="col-sm-8">{{singleQA.question.ques}} </label>
+    <hr class="col-sm-12" />
+    <input class="col-sm-2" type="checkbox" />
+    <br/>
+    <label class="col-sm-2"> Options : </label>
+    <br/>
+    <ul class="col-sm-8">
+      <li class="row" *ngFor="let ansOption of singleQA.answers; let j = index">
+        <label class="col-sm-12">
+          {{ansOption.ans}}
+          <!-- <input *ngIf="singleQA.multipleCorrect" class="col-sm-1 " #selectedAns type="checkbox" [attr.disabled]="submitted ? '' : null"
+            [attr.checked]="isChecked(singleQA.question._id,ansOption._id) ?'' : null" (change)="inputChange(singleQA.question._id,ansOption._id,selectedAns)"
+          />
+          <input *ngIf="!singleQA.multipleCorrect" class="col-sm-1" [attr.checked]="isChecked(singleQA.question._id,ansOption._id) ?'' : null"
+            [attr.name]="singleQA.question._id" type="radio" [attr.disabled]="submitted ? '' : null" (change)="radioChange(singleQA.question._id,ansOption._id)"
+          />{{ansOption.ans}} -->
+        </label>
+      </li>
+    </ul>
+    <hr class="col-sm-12" />
+    <label class="col-sm-3">Correct Answers =></label>
+    <label class="col-sm-9">{{getCorrectAns(singleQA.correctAns,singleQA.answers)}}</label>
+    <br class="col-sm-12" />
+    <br class="col-sm-12" />
+    <button class="btn btn-success col-sm-1" (click)="editQues(singleQA,i)">Edit</button>
+    <button class="btn btn-danger col-sm-1" (click)="deleteQues(singleQA,i)">Delete</button>
+  </div>
+  <hr id="singleQues" class="col-sm-12" />
+  <br/>
+  <br/>
+  <!-- <div class="row">
+    <span class="col-sm-12" *ngIf="questionNumber===totalQuestions ? false : true">
+      <button class="btn btn-success" id="next" (click)="onNext()">Next</button>
+    </span>
+  </div> -->
+  <button class="btn btn-danger" id="setTest" (click)="setTestPaper()">Set test paper</button>
+  <br/>
+  <br/>
+</div>
+<div id="overlay" *ngIf="overlay">
+  <div id="singleQues">
+    <app-add-ques-ans [overlay]="overlay" [purpose]=purpose [editData]=editData (overlayEvent)="overlay=$event"></app-add-ques-ans>
+  </div>
+</div>

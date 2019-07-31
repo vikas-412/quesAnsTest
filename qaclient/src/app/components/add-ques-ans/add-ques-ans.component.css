@@ -1,0 +1,23 @@
+a{
+  float: right;
+  margin-right: 20px
+}
+ul#checkbox{
+  list-style-type: none;
+}
+div {
+    text-align: center;
+    width: 700px;
+    background-color: rgba(255, 255, 255, 0.986);
+    margin: auto;
+    border-radius: 20px;
+    /* box-shadow: 10px 10px 2px rgb(160, 157, 157) */
+}
+
+div.validator{
+    color: red
+}
+
+/* ul{
+  margin-right: 50px
+} */

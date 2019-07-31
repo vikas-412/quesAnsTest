@@ -1,0 +1,61 @@
+<div class="container">
+  <br/>
+  <a (click)="toggleOverlay()" rel="nofollow">x</a>
+  <br/>
+  <h1>Add QA to database</h1>
+  <br/>
+  <form [formGroup]='quesAnsForm' (ngSubmit)="onSubmit()">
+    <span class="row">
+      <label class="col-sm-2">Question : </label>
+      <br/>
+      <textarea class="col-sm-8" placeholder="Enter the question here" formControlName="ques"></textarea>
+      <br/>
+      <span class='validator' *ngIf='submitted && formControls.ques.errors && formControls.ques.errors.required'>
+        <br/> Please enter the question</span>
+    </span>
+    <br/>
+    <span class="row">
+      <label class="col-sm-2">Answer :</label>
+      <br/>
+      <span formGroupName="rightAns">
+        <ul class="col-sm-1" id="checkbox">
+          <li>
+            <input type="checkbox" formControlName="ans1">
+          </li>
+          <li>
+            <input type="checkbox" formControlName="ans2">
+          </li>
+          <li>
+            <input type="checkbox" formControlName="ans3">
+          </li>
+          <li>
+            <input type="checkbox" formControlName="ans4">
+          </li>
+        </ul>
+      </span>
+      <ol class="col-sm-5">
+        <li>
+          <input type="text" formControlName="ans1" />
+        </li>
+        <span class='validator' *ngIf='submitted && formControls.ans1.errors && formControls.ans1.errors.required'>"Enter option for the question"</span>
+        <li>
+          <input type="text" formControlName="ans2" />
+        </li>
+        <span class='validator' *ngIf='submitted && formControls.ans2.errors && formControls.ans2.errors.required'>"Enter option for the question"</span>
+        <li>
+          <input type="text" formControlName="ans3" />
+        </li>
+        <span class='validator' *ngIf='submitted && formControls.ans3.errors && formControls.ans3.errors.required'>"Enter option for the question"</span>
+        <li>
+          <input type="text" formControlName="ans4" />
+        </li>
+        <span class='validator' *ngIf='submitted && formControls.ans4.errors && formControls.ans4.errors.required'>"Enter option for the question"</span>
+      </ol>
+      <br/>
+    </span>
+    <br/>
+    <button class="btn btn-success" type="submit">{{purpose==="add" ? "Add" : "Apply changes"}}</button>
+    <br/>
+    <br/>
+  </form>
+</div>

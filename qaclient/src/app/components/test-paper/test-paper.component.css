@@ -1,0 +1,75 @@
+button#submit{
+    float: left;
+    margin-left: 290px;
+    box-shadow: 6px 6px 3px rgb(105, 0, 0)
+}
+button#next{
+    box-shadow: 6px 6px 3px green;
+    float: right;
+    margin-right: 60px
+}
+
+div.container{
+    padding: 5%;
+    width : 60%;
+    z-index: 2;
+    border-radius: 20px;
+    box-shadow: 15px 15px 4px rgb(160, 157, 157);
+    background-color: rgba(255, 255, 255, 0.986);
+}
+h1{
+    margin-left: 36%
+}
+
+h2{
+    text-align: center
+}
+h3{
+    color: red;
+    text-align: center    
+}
+
+h5{
+    float: right;
+}
+h6{
+    text-align: right
+}
+div.correct{
+    text-align: center;
+    color:green;
+}
+countdown{
+    color: forestgreen
+}
+
+div.wrong{
+    text-align: left;
+    color: red;
+    margin-left: 20%    
+}
+
+div#overlay{
+  position: fixed; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  overflow-y: scroll;
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 120px 0px 0px 0px;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 5; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+div#score{
+    z-index: 8;
+    border-radius: 30px;      
+    background-color: white;
+    margin: auto;
+    width: 50%;
+    height: auto
+}

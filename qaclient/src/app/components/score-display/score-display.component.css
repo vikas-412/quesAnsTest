@@ -1,0 +1,16 @@
+div{
+    text-align: center
+}
+label{
+    text-align: left
+}
+button{
+    float: left
+}
+span{
+    text-align: left
+}
+
+button#OK{
+    margin-left: 45%
+}

@@ -1,0 +1,50 @@
+<div class="container">
+  <button *ngIf="submitted" class="btn btn-danger" (click)="logout()" >Logout</button>
+  <h3>{{testStartedMessage}}</h3>
+  <h1>Test Paper</h1>
+  <br/>  
+  <h6 *ngIf="!submitted">Total number of questions to solve : {{totalQuestions}}</h6>  
+  <h5 [style.color]="hurryMsg.length ? 'red':'black'" *ngIf="!submitted">{{hurryMsg.length? hurryMsg : ''}} Remaining time : {{(minutes.length-1)?'':'0'}}{{minutes}} min : {{(seconds.length-1)?'':'0'}}{{seconds}} sec</h5>  
+  <br/>
+  <br/>
+  <div class="row" *ngFor="let singleQA of singleTestPaperArray">
+    <label class="col-sm-3"> Question {{questionNumber}} :</label>
+    <br/>
+    <label class="col-sm-9">{{singleQA.question.ques}} </label>
+    <br/>
+    <label class="col-sm-3"> Options : </label>
+    <br/>
+    <ul class="col-sm-9">
+      <li class="row" *ngFor="let ansOption of singleQA.answers; let j = index">
+        <label class="col-sm-12">
+          <input *ngIf="singleQA.multipleCorrect" class="col-sm-1 " #selectedAns type="checkbox" [attr.disabled]="submitted ? '' : null"
+            [attr.checked]="isChecked(singleQA.question._id,ansOption._id) ?'' : null" (change)="inputChange(singleQA.question._id,ansOption._id,selectedAns)"
+          />
+          <input *ngIf="!singleQA.multipleCorrect" class="col-sm-1" [attr.checked]="isChecked(singleQA.question._id,ansOption._id) ?'' : null"
+            [attr.name]="singleQA.question._id" type="radio" [attr.disabled]="submitted ? '' : null" (change)="radioChange(singleQA.question._id,ansOption._id)"
+          />{{ansOption.ans}}
+        </label>
+      </li>
+    </ul>
+    <br/>
+    <br/>
+  </div>
+  <br/>
+  <br/>
+  <div class="row">
+    <span class="col-sm-12" *ngIf="questionNumber===totalQuestions ? false : true">
+      <button class="btn btn-success" id="next" (click)="onNext()">Next</button>
+    </span>
+  </div>
+  <span *ngIf="questionNumber===totalQuestions">
+    <button class="btn btn-danger" id="submit" [attr.disabled]="submitted ? '' : null" (click)="onSubmit()">Submit</button>
+  </span>
+  <br/>
+  <br/>    
+  <h2 *ngIf='submitted'>Your scored {{score}} out of {{totalQuestions}}</h2>
+</div>
+<div id="overlay" *ngIf="overlay">
+  <div id="score">
+    <app-score-display [overlay]="overlay" [score]="score" [scoreDetails]="scoreDetails" [totalQuestions]="totalQuestions" (overlayEvent)="overlay=$event"></app-score-display>
+  </div>
+</div>
